@@ -11,7 +11,7 @@ setup(
     description='',
     packages=find_packages(),
 install_requires=[
-      'pybluez','termcolor','bluepy','xlrd','numpy','pandas'],
+      'pybluez','termcolor','xlrd','numpy','pandas'],
     entry_points={
         'console_scripts': [
             'scanner = scanner:main',
