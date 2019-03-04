@@ -14,7 +14,7 @@ install_requires=[
       'pybluez','termcolor','xlrd','numpy','pandas'],
     entry_points={
         'console_scripts': [
-            'scanner = scanner:main',
+            'scanner = scanner.scanner:main',
         ],
     }
 
