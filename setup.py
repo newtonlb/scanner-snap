@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 from os import path
 setup(
-    name='scanner-snap',
+    name='scanner',
     version='',
     url='',
     license='',
@@ -14,7 +14,7 @@ install_requires=[
       'pybluez','termcolor','bluepy','xlrd','numpy','pandas'],
     entry_points={
         'console_scripts': [
-            'scanner-snap = Scanner:main',
+            'scanner = scanner:main',
         ],
     }
 
