@@ -12,7 +12,7 @@ setup(
     packages=find_packages(),
     py_modules=['scanner', 'GPS_class'],
 install_requires=[
-      'pybluez','termcolor','xlrd','numpy','pandas'],
+      'pybluez','termcolor','xlrd','numpy','pandas', 'pyserial'],
     entry_points={
         'console_scripts': [
             'scanner = scanner.scanner:main',
