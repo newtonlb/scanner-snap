@@ -10,9 +10,9 @@ setup(
     author_email='',
     description='',
     packages=find_packages(),
-    python_requires='>=3.5'
+    python_requires='>=3.5',
     py_modules=['scanner', 'GPS_class'],
-install_requires=[
+    install_requires=[
       'pybluez','termcolor','xlrd','numpy','pandas', 'pyserial', 'bluepy'],
     entry_points={
         'console_scripts': [
