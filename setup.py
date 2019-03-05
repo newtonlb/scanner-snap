@@ -10,6 +10,7 @@ setup(
     author_email='',
     description='',
     packages=find_packages(),
+    py_modules=['scanner'],
 install_requires=[
       'pybluez','termcolor','xlrd','numpy','pandas'],
     entry_points={
