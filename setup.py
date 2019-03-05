@@ -10,7 +10,7 @@ setup(
     author_email='',
     description='',
     packages=find_packages(),
-    py_modules=['scanner'],
+    py_modules=['scanner', 'GPS_class'],
 install_requires=[
       'pybluez','termcolor','xlrd','numpy','pandas'],
     entry_points={
