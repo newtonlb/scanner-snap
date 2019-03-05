@@ -19,3 +19,6 @@ parts:
     source-tag: master
     # See 'snapcraft plugins'
     plugin: python
+    python-version: 'python3'
+    python-packages: [termcolor,pybluez,bluepy,xlrd,numpy,pandas, pyserial]
+    stage-packages: [bluetooth,libbluetooth-dev,libglib2.0-dev]
