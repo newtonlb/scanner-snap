@@ -1,4 +1,5 @@
 import requests
+import json
 
 
 class Requester:
@@ -8,5 +9,5 @@ class Requester:
 
 
     def post_request(self, payload):
-        r = requests.post(self.url, data=payload)
+        r = requests.post(self.url, data=json.dumps(payload))
         return r
