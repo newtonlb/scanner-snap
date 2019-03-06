@@ -249,7 +249,7 @@ class Scanner:
 
                     if packet["type"] == "iBeacon":
                         payload = {
-                           "t": "NpwsMyWqrGXGdbWKLf9c",
+                           "t": "bnn7QmMcHpyzH2wpWCEH",
                            "p": [{
                                "n": "scan",
                                "uuid": r["uuid"],
@@ -267,7 +267,7 @@ class Scanner:
                            }],
                             "u": "dell-edge-gateway"
                         }
-                        req = Requester('https://api.beaconinside.com/v1/context')
+                        req = Requester('https://beaconinside-cms-develop.appspot.com/v1/context')
                         resp = req.post_request(payload)
                         print(resp)
                     if not seconds and not required:
