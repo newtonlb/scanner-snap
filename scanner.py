@@ -249,7 +249,7 @@ class Scanner:
 
                     if packet["type"] == "iBeacon":
                         payload = {
-                           "t": "656FJd2mqgF4moyCJWpn",
+                           "t": "NpwsMyWqrGXGdbWKLf9c",
                            "p": [{
                                "n": "scan",
                                "uuid": r["uuid"],
