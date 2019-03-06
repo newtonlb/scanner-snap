@@ -264,7 +264,8 @@ class Scanner:
 
                                }
 
-                           }]
+                           }],
+                            "u": "dell-edge-gateway"
                         }
                         req = Requester('https://api.beaconinside.com/v1/context')
                         resp = req.post_request(payload)
