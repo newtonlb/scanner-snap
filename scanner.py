@@ -15,7 +15,7 @@ import subprocess
 from datetime import datetime
 from time import sleep
 from GPS_class import Gps
-
+from requester import Requester
 try:
     import bluetooth._bluetooth as bluez
 except:
@@ -247,6 +247,28 @@ class Scanner:
                         "count": 0,
                     }
 
+                    if packet["type"] == "iBeacon":
+                        payload = {
+                           "t": "656FJd2mqgF4moyCJWpn",
+                           "p": [{
+                               "n": "scan",
+                               "uuid": r["uuid"],
+                               "rssi": rssi,
+                               "major": r["major"],
+                               "minor": r["minor"],
+                               "at": str(datetime.utcnow()),
+                               "g": {
+                                   "lat": loc["lat"],
+                                   "lon": loc["lon"],
+                                   "ts": str(datetime.utcnow()),
+
+                               }
+
+                           }]
+                        }
+                        req = Requester('https://api.beaconinside.com/v1/context')
+                        resp = req.post_request(payload)
+                        print(resp)
                     if not seconds and not required:
                         self.print_packets_compact([packet])
                         continue
