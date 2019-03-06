@@ -16,6 +16,7 @@ from datetime import datetime
 from time import sleep
 from GPS_class import Gps
 from requester import Requester
+import datetime
 try:
     import bluetooth._bluetooth as bluez
 except:
@@ -256,11 +257,11 @@ class Scanner:
                                "rssi": rssi,
                                "major": r["major"],
                                "minor": r["minor"],
-                               "at": str(datetime.utcnow()),
+                               "at": str(datetime.utcnow().isoformat("T")) + "Z",
                                "g": {
                                    "lat": loc["lat"],
                                    "lon": loc["lon"],
-                                   "ts": str(datetime.utcnow()),
+                                   "ts": str(datetime.utcnow().isoformat("T")) + "Z",
 
                                }
 
