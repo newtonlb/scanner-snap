@@ -16,7 +16,6 @@ from datetime import datetime
 from time import sleep
 from GPS_class import Gps
 from requester import Requester
-import datetime
 try:
     import bluetooth._bluetooth as bluez
 except:
