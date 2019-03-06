@@ -31,7 +31,6 @@ class Gps:
 		if matcher:
 			seconds = float(matcher.group()[1:])
 
-		print(degrees, minutes, seconds)
 		return degrees, minutes, seconds
 
 	
@@ -53,7 +52,7 @@ class Gps:
 					sec=sec/1000.0
 					lat = self.dms2dd(deg, minu, sec, data[3])
 
-					deg, minu, sec = getNumbers(data[4], coord='lon')
+					deg, minu, sec = self.getNumbers(data[4], coord='lon')
 					sec=sec/1000.0
 					lon = self.dms2dd(deg, minu, sec, data[5])
 					# if data[5] == 'E':
