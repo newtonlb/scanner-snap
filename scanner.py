@@ -116,8 +116,8 @@ class Scanner:
 
     def _restart_interface(self):
         cmds = [
-            "hciconfig hci0 down",
-            "hciconfig hci0 up"
+            "hciconfig hci" + str(bluez.hci_get_route()) + " down",
+            "hciconfig hci"+ str(bluez.hci_get_route()) + " up"
         ]
 
         for cmd in cmds:
@@ -134,7 +134,7 @@ class Scanner:
 
         while True:
             try:
-                self.sock = bluez.hci_open_dev(Constants.DEV_ID)
+                self.sock = bluez.hci_open_dev(bluez.hci_get_route())
 
                 cmd_pkt = struct.pack("<BB", 0x01, 0x00)
                 bluez.hci_send_cmd(self.sock, Constants.OGF_LE_CTL, Constants.OCF_LE_SET_SCAN_ENABLE, cmd_pkt)

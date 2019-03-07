@@ -1,6 +1,5 @@
 
 from setuptools import setup, find_packages
-from os import path
 setup(
     name='scanner',
     version='',
@@ -13,7 +12,7 @@ setup(
     python_requires='>=3.5',
     py_modules=['scanner', 'GPS_class', 'requester'],
     install_requires=[
-      'pybluez','termcolor','xlrd','numpy','pandas', 'pyserial', 'bluepy', 'requests'],
+      'pybluez','termcolor','xlrd', 'pyserial', 'bluepy', 'requests'],
     entry_points={
         'console_scripts': [
             'scanner = scanner:main',
