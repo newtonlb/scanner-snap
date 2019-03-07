@@ -28,10 +28,12 @@ def main():
 
     advertising = Scanner()
     args = sys.argv[1:]
-    if "--gateway-type" in args:
-        advertising.gateway_type = args[args.index("--gateway-type") + 1]
     if "--gps-enabled" in args:
         advertising.gps_enabled = True
+        advertising.gateway_type = "static"
+    if "--gateway-type" in args:
+        advertising.gateway_type = args[args.index("--gateway-type") + 1]
+
 
     if advertising.gateway_type == "static" and advertising.gps_enabled:
         gps = Gps()
@@ -279,8 +281,8 @@ class Scanner:
                         }
                         if r["loc"]:
                             payload["p"][0]["g"] = {
-                                   "lat": loc["lat"],
-                                   "lon": loc["lon"],
+                                   "lat": r["loc"]["lat"],
+                                   "lon": r["loc"]["lon"],
                                    "ts": str(datetime.utcnow().isoformat("T")) + "Z",
 
                                }
