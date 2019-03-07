@@ -28,6 +28,11 @@ def main():
 
     advertising = Scanner()
     args = sys.argv[1:]
+
+    if "--help" in args or "-h" in args:
+        printHelp()
+        exit()
+
     if "--gps-enabled" in args:
         advertising.gps_enabled = True
         advertising.gateway_type = "static"
@@ -40,6 +45,24 @@ def main():
         advertising.loc = gps.getGPSPosition()
     while True:
         advertising.get_packets()
+
+def printHelp():
+    help = """
+    Usage: scanner options
+           scanner -h | --help
+           
+           
+    Options:
+        --gps-enabled   Get GPS coordinates if your hardware supports it
+                        Default is not enabled.
+        
+        --gateway-type  [static | mobile] Changes how often the script will get the GPS coordinates
+                        if static, will get before the start of scanning,
+                        if mobile, will get each scanning loop.
+                          
+    
+    """[1:-1]
+    print(help)
 
 
 class Scanner:
