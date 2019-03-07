@@ -16,6 +16,7 @@ from datetime import datetime
 from time import sleep
 from GPS_class import Gps
 from requester import Requester
+import sys
 try:
     import bluetooth._bluetooth as bluez
 except:
@@ -24,14 +25,27 @@ from termcolor import colored
 
 
 def main():
+
     advertising = Scanner()
+    args = sys.argv[1:]
+    if "--gateway-type" in args:
+        advertising.gateway_type = args[args.index("--gateway-type") + 1]
+    if "--gps-enabled" in args:
+        advertising.gps_enabled = True
+
+    if advertising.gateway_type == "static" and advertising.gps_enabled:
+        gps = Gps()
+        advertising.loc = gps.getGPSPosition()
     while True:
         advertising.get_packets()
 
 
 class Scanner:
     def __init__(self):
+        self.gateway_type = None
+        self.gps_enabled = False
         self.sock = None
+        self.loc = None
 
     def print_packets(self, packets):
         for p in packets:
@@ -234,11 +248,13 @@ class Scanner:
                     if rssi_threshold and rssi < rssi_threshold:
                         continue
 
-
-                   
-                    gps = Gps()
-                    loc = gps.getGPSPosition()
-                    r["loc"] = loc
+                    if self.gps_enabled:
+                        if self.gateway_type == "mobile":
+                            gps = Gps()
+                            loc = gps.getGPSPosition()
+                            r["loc"] = loc
+                        else:
+                            r["loc"] = self.loc
                     packet = {
                         "rssi": rssi,
                         "type": type,
@@ -257,16 +273,17 @@ class Scanner:
                                "major": r["major"],
                                "minor": r["minor"],
                                "at": str(datetime.utcnow().isoformat("T")) + "Z",
-                               "g": {
+
+                           }],
+                            "u": "dell-edge-gateway"
+                        }
+                        if r["loc"]:
+                            payload["p"][0]["g"] = {
                                    "lat": loc["lat"],
                                    "lon": loc["lon"],
                                    "ts": str(datetime.utcnow().isoformat("T")) + "Z",
 
                                }
-
-                           }],
-                            "u": "dell-edge-gateway"
-                        }
                         req = Requester('https://beaconinside-cms-develop.appspot.com/v1/context')
                         resp = req.post_request(payload)
                         print(resp)
