@@ -302,7 +302,7 @@ class Scanner:
                            }],
                             "u": "dell-edge-gateway"
                         }
-                        if r["loc"]:
+                        if "loc" in r.keys():
                             payload["p"][0]["g"] = {
                                    "lat": r["loc"]["lat"],
                                    "lon": r["loc"]["lon"],
