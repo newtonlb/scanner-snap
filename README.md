@@ -1,4 +1,4 @@
-# the scanner-snap !
+# The Scanner-snap !
 A snap provided by [Beaconinside](https://www.beaconinside.com)  to detect proximity beacons and send its data to our context API .
 
 ## Installation 
@@ -6,22 +6,22 @@ A snap provided by [Beaconinside](https://www.beaconinside.com)  to detect proxi
 ```
 sudo snapcraft
 ```
-after the build is over the snap binary is generated . to install it run 
+after the build is over the snap binary is generated. To install it run 
 ```
 sudo snap install scanner_0.1_amd64.snap --dangerous
 
 ```
-## how to use 
-first, enable bluetooth interface
+## How to use 
+First, enable bluetooth interface
 ```
 sudo hciconfig hci0 up 
 ```
-The next step is to connect the snap to the needed interfaces . some interfaces may be automatically connected depending on your hardware . You can check their status by :
+The next step is to connect the snap to the needed interfaces. Some interfaces may be automatically connected depending on your hardware. You can check their status by :
 
 ```
 snap interfaces scanner 
 ```
-then connect the missing ones . Here is the commands (you won't use them all )
+Then connect the missing ones. Here are the commands (you won't use them all )
 ```
 snap connect scanner:bluetooth-control :bluetooth-control
 snap connect scanner:network :network 
@@ -30,7 +30,7 @@ snap connect scanner:network-bind :network-bind
 snap connect scanner:serial-port :caracalla:ttys4
 
 ```
-note that you need to identify the slot to connect the serial-port plug to , which corespounds to the port on which the GPS chipset is mounted. On our case it's ttys4.
+Note that you need to identify the slot to connect the serial-port plug to, which corespounds to the port on which the GPS chipset is mounted. On our case it's ttys4.
 
 finally to run the snap you can  
 ```
