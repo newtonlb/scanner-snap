@@ -16,7 +16,7 @@ First, enable bluetooth interface
 ```
 sudo hciconfig hci0 up 
 ```
-The next step is to connect the snap to the needed interfaces. Some interfaces may be automatically connected depending on your hardware. You can check their status by :
+The next step is to connect the snap to the needed interfaces. Some interfaces may be automatically connected depending on your hardware. You can check their connection status by :
 
 ```
 snap interfaces scanner 
@@ -27,7 +27,7 @@ snap connect scanner:bluetooth-control :bluetooth-control
 snap connect scanner:network :network 
 snap connect scanner:network-observe :network-observe
 snap connect scanner:network-bind :network-bind
-snap connect scanner:serial-port :caracalla:ttys4
+snap connect scanner:serial-port caracalla:ttys4
 
 ```
 Note that you need to identify the slot to connect the serial-port plug to, which corespounds to the port on which the GPS chipset is mounted. On our case it's ttys4.
