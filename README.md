@@ -2,7 +2,7 @@
 A snap provided by [Beaconinside](https://www.beaconinside.com)  to detect proximity beacons and send its data to our context API .
 
 ## Installation 
- first, we need to build the snap
+ First, we need to build the snap
 ```
 sudo snapcraft
 ```
